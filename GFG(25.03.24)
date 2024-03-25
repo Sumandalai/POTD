@@ -1,0 +1,25 @@
+//Print N-bit binary numbers having more 1s than 0s
+class Solution{
+public:	
+    void check(int i,int one,int zero,string s,int n,vector<string>&ans){
+        //base case
+         if(i==n){
+                 ans.push_back(s);
+             return ;
+         }
+       
+        if(one==zero)
+          check(i+1,one+1,zero,s+'1',n,ans);
+        else{
+          check(i+1,one+1,zero,s+'1',n,ans);
+          check(i+1,one,zero+1,s+'0',n,ans);
+        }
+    }
+	vector<string> NBitBinary(int n)
+	{
+	    vector<string>ans;
+	   
+	    check(0,0,0,"",n,ans);
+	    return ans;
+	}
+};
